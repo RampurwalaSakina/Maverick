@@ -1,0 +1,36 @@
+<apex:page >
+   <form action="https://front-desk.propertybase.com/forms/070a4e3d1c555c34666c12840eec5a65e1544ccc" method="post">
+        <p><b>First Name</b></p>
+        <p><input type="text" name="contact[FirstName]" /></p>
+        <p><b>Last Name</b></p>
+        <p><input type="text" name="contact[LastName]" /></p>
+       <p><b>Email Id</b></p>
+        <p><input type="text" name="contact[Email]" /></p>
+        <p><b>Phone Number </b></p>
+        <p><input type="text" name="contact[MobilePhone]" /></p>
+       
+       
+       <!-- It will create Linked Listing-->
+       <input type="hidden" name="favorite_unique_ids[]" value="test"/>
+       <input type="hidden" name="unique_id_field" value="pba__SystemExternalId__c" />
+       
+       
+       <!--It will create Inquiry with contact-->
+       <input type="hidden" name="request[pba__WebsiteSearchUrl_pb__c]" value="www.mywebsite.com" />
+       <input type="hidden" name="property_owner_contact_field" value="pba__PropertyOwnerContact_pb__c" />
+       <input type="hidden" name="request[Listing__c]" value="a0E3H000005YLXCUA4" />
+     
+       
+       <p><button type="submit" >Submit Form</button></p>
+       
+       
+         <!-- Leave this field here -->
+         <input type="text" name="h_070a4e3d1c555c34666c12840eec5a65e1544ccc" value="" style="display: none" />
+      </form>
+       <script>
+    function acceptParam() {
+        var theURL = window.location.href;
+        document.getElementById('myURL').value = theURL;
+        }
+</script>
+</apex:page>

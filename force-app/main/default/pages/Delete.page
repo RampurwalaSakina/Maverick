@@ -1,0 +1,35 @@
+<apex:page StandardController="Contact"  action="{!submitForApproval}" extensions="ContactDeleteController">
+    <apex:outputPanel rendered="{!if(loggedInUserId != user1 && loggedInUserId != user2 && loggedInUserId != user3 , true ,false)}">
+        <div style="margin-top:40px;margin-bottom:15px;font-size:20px; color:black; text-align:center">
+            Contact Record has been sent for Approval. If approved, this will be deleted automatically.
+        </div>
+        <apex:form >
+            <div style="font-size:12px;text-align:center">
+                <apex:commandButton value="Back to Previous Page" oncomplete="doRedirect();" style="background:#0070d2;color:#ffffff;"/> 
+                <script type="text/javascript">
+                function doRedirect()
+                {
+                    window.history.back();
+                }            
+                </script>
+            </div>
+    	</apex:form>
+    </apex:outputPanel>
+    <apex:outputPanel rendered="{!if(loggedInUserId == user1 || loggedInUserId == user2 || loggedInUserId == user3 , true ,false)}">
+        <div style="margin-top:40px;margin-bottom:15px;font-size:20px; color:black; text-align:center">
+            Contact Record has been deleted.
+        </div>
+        <apex:form >
+            <div style="font-size:12px;text-align:center">
+                <!--<input style="background:#0070d2;color:#ffffff;" lightningStylesheets="true" type="button" class="btn" value="Back to Contact Page" onclick="window.location = '{!URLFOR($Action.Contact.Tab, $ObjectType.Contact)}'" />-->
+            	<apex:commandButton value="Back to Home Page" oncomplete="redirectToHomePage();" style="background:#0070d2;color:#ffffff;"/> 
+                <script type="text/javascript">
+                function redirectToHomePage()
+                {
+                    window.location = 'https://my-maverickae.lightning.force.com/lightning/page/home';
+                }            
+                </script>
+            </div>
+        </apex:form>
+    </apex:outputPanel>    
+</apex:page>
