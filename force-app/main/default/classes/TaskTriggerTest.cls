@@ -11,17 +11,7 @@ public class TaskTriggerTest {
                           TimeZoneSidKey='America/Los_Angeles', UserName='standarduser1@tesorg.com', ManagerId = UserInfo.getUserId());
         Insert u;
         System.runAs(u) {
-            Contact con =new Contact();
-            con.LastName='test';
-            con.Email='test@test.com';
-            con.pba__ContactType_pb__c = 'Property Management Company';
-            con.Stage__c = 'Active';
-            con.MailingStreet = 'Test';
-            con.MailingCity = 'Test';
-            con.MailingCountry = 'India';
-            con.LeadSource = 'Open House';
-            con.MobilePhone ='11122222222'; 
-            insert con;
+          
             
             Id ListingTypeId = Schema.SObjectType.pba__Listing__c.getRecordTypeInfosByName().get('Rent').getRecordTypeId();
     
@@ -57,17 +47,17 @@ public class TaskTriggerTest {
                 
             Task tsk1             = new Task();
             tsk1.OwnerId          = u.Id;
-            // tsk1.WhatId           = null;
+             tsk1.WhatId           = listing1.Id;
             tsk1.ActivityDate     = System.today().addDays(-30);
             tsk1.Status           = 'Not Started';
             tsk1.Priority         = 'High';
             tsk1.Subject          = 'Check Updates';
-            // tsk1.Is_the_Property_still_with_Landlord__c='Available';
+            tsk1.Is_the_Property_still_with_Landlord__c='Available';
             tasks.add(tsk1);   
             insert tasks;
 
-            tasks[0].WhatId= listing1.Id;
-             update tasks;
+            //tasks[0].WhatId= listing1.Id;
+             //update tasks;
             
         }
 
